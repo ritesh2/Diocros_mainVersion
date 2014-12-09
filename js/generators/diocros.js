@@ -108,7 +108,7 @@ Blockly.Diocros.init = function() {
   var defvars = [];
   var variables = Blockly.Variables.allVariables();
   for (var x = 0; x < variables.length; x++) {
-    defvars[x] = 'var ' +
+    defvars[x] = 'int ' +
         Blockly.Diocros.variableDB_.getName(variables[x],
         Blockly.Variables.NAME_TYPE) + ';';
   }

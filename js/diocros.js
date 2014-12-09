@@ -92,8 +92,9 @@ Blockly.Diocros['wait'] = function(block) {
 	
   // TODO: Assemble JavaScript into code variable.
 
-  var code = 'delay(';
+  var code = '_delay_ms(';
 code = code.concat(value_A);
+code=code = code.concat('000');
 code = code.concat(');\n');
   return code;
 };
@@ -259,7 +260,7 @@ Blockly.Diocros['main'] = function(block) {
   var statements_main = Blockly.Diocros.statementToCode(block, 'main');
   // TODO: Assemble Diocros into code variable.
   var code = '';
-  code = code.concat('#include<avr/io.h>\n#include<util/delay.h>\n');
+  code = code.concat('#include<avr/io.h>\n#include<util/delay.h>\n#include<avr/leds.h>\n');
   code = code.concat('void main(){\n');
   code=code.concat(statements_main);
   code=code.concat('}');

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Blockly Demo: Toolbox</title>
+  <title>DioCroS</title>
   <script type="text/javascript" src="js/blockly_compressed.js"></script>
   <script type="text/javascript" src="js/blocks_compressed.js"></script>
   <script type="text/javascript" src="js/javascript_compressed.js"></script>
@@ -53,13 +53,84 @@ h1{
 
 
   </style>
-  
+<script type="text/javascript">
+    var gui = require('nw.gui');
+    var child_process = require('child_process');
+
+
+	function clr(){
+			document.getElementById("output").value= "";
+		}	
+
+	function burnCode(){
+		
+		/*cmd /c bin\\c_and_gen.bat sample*/
+		writeSample();
+		child_process.execFile('.\\bin\\c_and_gen.bat',['sample'], function(error, stdout, stderr){
+				document.getElementById("output").value+= stdout;				                
+				document.getElementById("output").value+= stderr;	            
+              });
+	}
+
+
+    //var process_node = require('process');
+    // Create menu container
+    var Menu = new gui.Menu({
+        type:   'menubar'
+    });
+  /*  Menu.createMacBuiltin("DioCroS", {
+      hideEdit: true,
+      hideWindow: true
+    });*/
+    // Create new root menu
+    var downloadMenu = new gui.Menu();
+
+    // Append new item to downloadMenu
+    downloadMenu.append(
+        new gui.MenuItem({
+            label: 'Download',
+            click: function() {
+              child_process.exec('cmd /c sample.bat', function(error, stdout, stderr){
+                  alert('Platform : '+stderr);
+                  // …you callback code may run here…
+              });
+            }
+        })
+    );
+
+    // Append downloadMenu to root Menu
+    Menu.append(
+        new gui.MenuItem({
+            label: 'File',
+            submenu: downloadMenu
+        })
+    );
+
+    // Append Menu to Window
+    gui.Window.get().menu = Menu;
+
+	function writeSample(){
+		var code=Blockly.Diocros.workspaceToCode();
+		document.getElementById("output").value=code;				                
+		var fs = require('fs');
+		fs.writeFile('./workspace/sample.c', code, function (err) {
+		if (err) throw err;
+		document.getElementById("output").value+= "\nSaved";				                
+		});
+	}
+
+
+
+</script>
 </head>
 <body>
   <center><h1>DioCroS</h1>
 
   <button onclick="showCode()" value="ShowCode" class="myButton">ShowCode</button>
-	
+  <button onclick="writeSample()" value="Write Code" class="myButton">Save Code</button>
+  <button onclick="burnCode()" value="Burn Code" class="myButton">Burn Code</button>
+	<button onclick="clr()" value="Clear Console" class="myButton">Clear Console</button>	
+
   <div id="blocklyDiv" style="height: 500px; width: 800px;"></div>
 </center>
   <xml id="toolbox" style="display: none">
@@ -172,11 +243,17 @@ h1{
 	<category name="Variables" custom="VARIABLE"></category>
   </xml>
 
+<textarea id='output' rows=20 cols=90></textarea>
+
+
   <script>
     Blockly.inject(document.getElementById('blocklyDiv'),
         {toolbox: document.getElementById('toolbox')});
   </script>
   <script type="text/javascript">
+
+		
+
   		function showCode() {
   			Blockly.Diocros.INFINITE_LOOP_TRAP = null;
 		    var code = Blockly.Diocros.workspaceToCode();

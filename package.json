@@ -1,4 +1,15 @@
 {
-  "name" : "Name of Your App",
-  "main" : "index.html",	
-   }
+  "name" : "DioCros",
+  "version": "0.0.1",
+  "description": "DioCros application for Drag and Drop",
+  "main" : "index.html",
+
+  "window" :
+  {
+    "width" : 800,
+    "height" : 800,
+      "toolbar": false,
+    "frame": true
+   },
+  "author": "Nutan Kumar Lade"
+}
