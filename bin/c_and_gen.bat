@@ -1,5 +1,5 @@
 @ECHO off
-chdir ./workspace
+chdir ./workspace/%1
 avr-gcc.exe  -mmcu=atmega128 -Wall -gdwarf-2 -Os -std=gnu99 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -MD -MP -MT %1.o -MF %1.o.d  -c  %1.c
 avr-gcc.exe -mmcu=atmega128 -Wl,-Map=%1.map %1.o     -o %1.elf
 avr-objcopy -O ihex -R .eeprom  %1.elf %1.hex
