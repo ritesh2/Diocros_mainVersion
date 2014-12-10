@@ -18,6 +18,13 @@
    <script type="text/javascript" src="js/window_properties.js"></script>
    <link rel="stylesheet" type="text/css" href="css/index.css">
 
+<script type="text/javascript">
+	function init(){
+		alert('init');
+	}
+
+</script>
+
 </head>
 <body>
   <center><h1>DioCroS</h1>
@@ -41,7 +48,9 @@
   <div id="blocklyDiv" style="height: 500px; width: 800px;"></div>
 </center>
   <xml id="toolbox" style="display: none">
+     
     <category name="Diocros">
+		<block type="forward"></block>
       <block type="forward"></block>
 	  <block type="backward"></block>
 	  <block type="wait"></block>
@@ -51,11 +60,15 @@
 	  <block type="sample_block"></block>
      <block type="led_rgb"></block>
 	 <block type="main"></block>
+	 <block type="repeat_infinite"></block>
+
 	</category>
 	<category name="Sensors">
 	</category>
+
     <category name="Logic">
-      <category name="If">
+      
+	  <category name="If">
         <block type="controls_if"></block>
         <block type="controls_if">
           <mutation else="1"></mutation>
@@ -64,6 +77,8 @@
           <mutation elseif="1" else="1"></mutation>
         </block>
       </category>
+
+
       <category name="Boolean">
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
@@ -72,9 +87,13 @@
         <block type="logic_null"></block>
         <block type="logic_ternary"></block>
       </category>
-    </category>
+    
+	</category>
+
+
+
     <category name="Loops">
-      <block type="controls_repeat_ext">
+	  <block type="controls_repeat_ext">
         <value name="TIMES">
           <block type="math_number">
             <field name="NUM">10</field>
@@ -91,7 +110,7 @@
         </value>
         <value name="TO">
           <block type="math_number">
-            <field name="NUM">10</field>
+            <field name="NUM">8</field>
           </block>
         </value>
         <value name="BY">
@@ -147,6 +166,8 @@
       </block>
       <block type="math_random_float"></block>
     </category>
+
+
 	<category name="Variables" custom="VARIABLE"></category>
   </xml>
 

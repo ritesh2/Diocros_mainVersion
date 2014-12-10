@@ -1,7 +1,8 @@
 function storeBlocks(){
 	var fs = require('fs');
 	var folder_name=document.getElementById("fileName").value;
-	var path = './workspace/';
+	var root = 'C:/Program Files/Diocros'
+	var path = root+'/workspace/';
 	if(folder_name.length>0){
 			path+=folder_name.trim()+'/';
 			fs.mkdir(path, function(){});
@@ -30,7 +31,8 @@ function restoreBlocks(){
 	var code_text = '';
 	var fs = require('fs');
 	var folder_name=document.getElementById("fileName").value;
-	var path = './workspace/';
+	var root = 'C:/Program Files/Diocros'
+	var path = root+'/workspace/';
 	if(folder_name.length>0){
 			path+=folder_name.trim()+'/';
 			fs.mkdir(path, function(){});
@@ -54,7 +56,8 @@ function restoreBlocks(){
 function saveCode(){
 		var fs = require('fs');
 		var folder_name=document.getElementById("fileName").value;
-		var path = './workspace/';
+		var root = 'C:/Program Files/Diocros'
+		var path = root+'/workspace/';
 		if(folder_name.length>0){
 		path+=folder_name.trim()+'/';
 		fs.mkdir(path, function(){});
@@ -84,3 +87,9 @@ function burnCode(){
 function clearConsole(){
 			document.getElementById("output").value= "";
 	}	
+
+function showCode() {
+  			Blockly.Diocros.INFINITE_LOOP_TRAP = null;
+		    var code = Blockly.Diocros.workspaceToCode();
+		    alert(code);
+  }

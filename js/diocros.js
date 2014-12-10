@@ -253,6 +253,9 @@ Blockly.Blocks['main'] = {
     this.appendStatementInput("main")
         .appendField("Start");
     this.setTooltip('');
+	this.setDeletable(false);
+	
+	
   }
 };
 
@@ -267,3 +270,24 @@ Blockly.Diocros['main'] = function(block) {
   return code;
 };
 
+
+
+Blockly.Blocks['repeat_infinite'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setColour(65);
+    this.appendStatementInput("repeat_infinite")
+        .appendField("Repeat Forever");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+  }
+};
+
+Blockly.Diocros['repeat_infinite'] = function(block) {
+  var statements_repeat_infinite = Blockly.Diocros.statementToCode(block, 'repeat_infinite');
+  var code = 'while(1){\n';
+  code+=statements_repeat_infinite;
+  code+='\n}';
+  return code;
+};
