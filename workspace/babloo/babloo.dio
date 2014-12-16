@@ -1,1 +1,1 @@
-<xml xmlns="http://www.w3.org/1999/xhtml"><block type="main" id="20" x="128" y="42"><statement name="main"><block type="controls_if" id="1" inline="false"></block></statement></block></xml>
+<xml xmlns="http://www.w3.org/1999/xhtml"><block type="forward" id="12" x="-1" y="6"><next><block type="forward" id="24"></block></next></block></xml>

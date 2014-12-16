@@ -1,0 +1,1 @@
+Pavan.o: Pavan.c

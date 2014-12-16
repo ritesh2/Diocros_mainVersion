@@ -174,8 +174,7 @@ Blockly.Toolbox.populate_ = function() {
         }
       } else if (name == 'BLOCK') {
         treeOut.blocks.push(childIn);
-      }
-    }
+	  }
   }
   syncTrees(Blockly.languageTree, Blockly.Toolbox.tree_);
 

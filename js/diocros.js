@@ -263,7 +263,8 @@ Blockly.Diocros['main'] = function(block) {
   var statements_main = Blockly.Diocros.statementToCode(block, 'main');
   // TODO: Assemble Diocros into code variable.
   var code = '';
-  code = code.concat('#include<avr/io.h>\n#include<util/delay.h>\n#include<avr/leds.h>\n');
+  code = code.concat('#include<avr/io.h>\n#include<util/delay.h>\n#include<dio/dleds.h>\n');
+  code = code.concat('#include<dio/dbuzzer.h>\n');
   code = code.concat('void main(){\n');
   code=code.concat(statements_main);
   code=code.concat('}');

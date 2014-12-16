@@ -1,0 +1,43 @@
+<html>
+	<head>	
+		<script type="text/javascript">
+			function appendNameToList(name){
+					var node = document.createElement("LI");
+					var txt = document.createTextNode(name);
+					node.appendChild(txt);
+					document.getElementById("myList").appendChild(node);
+			}
+
+
+			function getProjectNames(){
+				var fs = require('fs');
+				fs.readdir("C:/Program Files/Diocros/workspace/", function(err,files){
+					for(var i=0;i<files.length;i++){
+						appendNameToList(files[i]);
+						addOptionToList(files[i])
+					}
+				});
+			}
+
+		function addOptionToList(name) {
+			var x = document.createElement("OPTION");
+			x.setAttribute("value", name);
+			var t = document.createTextNode(name.toUpperCase());
+			x.appendChild(t);
+			document.getElementById("mySelect").appendChild(x);
+		}
+
+		</script>
+	</head>
+
+	<body>
+		<ul	id="myList">
+		</ul>
+		<select id="mySelect">
+		</select>
+
+		<br>
+		<button onclick="appendChild()">Test</button><br>
+		<button onclick="getProjectNames()">Get </button><br>
+	</body>
+</html>
